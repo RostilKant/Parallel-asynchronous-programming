@@ -1,8 +1,1 @@
-*.dll
-*.json
-*.pdb
-*.cache
-*.xml
 .idea
-obj
-bin
