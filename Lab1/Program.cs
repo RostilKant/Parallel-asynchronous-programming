@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace Lab1
 {
@@ -15,16 +17,21 @@ namespace Lab1
                 Console.WriteLine();
             }            
         }
-        
+
         private static void Main(string[] args)
         {
-            var matrix = Calculator.CreateAndFillMatrix(10);
-            PrintMatrix(matrix);
+            var stopwatch1 = new Stopwatch();
+            var stopwatch2 = new Stopwatch();
+            var matrix1 = Calculator.CreateAndFillMatrix(4);
+            var matrix2 = Calculator.CreateAndFillMatrix(2_0);
 
-            Calculator.TransformMatrix(matrix);            
+            PrintMatrix(matrix1);
             Console.WriteLine();
+            
+            Calculator.TransformMatrix(matrix1);
+            PrintMatrix(matrix1);
 
-            PrintMatrix(matrix);
+            
         }
     }
 }

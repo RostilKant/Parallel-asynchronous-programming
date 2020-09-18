@@ -7,33 +7,38 @@ namespace Lab1
     {
         public static int[,] CreateAndFillMatrix(int n)
         {
-            var matrix = new int[n,n];
+            var matrix = new int[n, n];
             var random = new Random();
 
             for (var x = 0; x < n; ++x)
             {
                 for (var y = 0; y < n; ++y)
                 {
-                    matrix[x, y] = random.Next(100);
+                    matrix[x, y] = random.Next(5);
                 }
             }
+
             return matrix;
         }
 
         public static void TransformMatrix(int[,] matrix)
         {
             var size = matrix.GetLength(0);
-            
-            for (var y = 0; y < size; y++)
+            for (var x = 0; x < size; ++x)
             {
-                var count = (y <= size/2) ? y : size/2 - (y - size/2);
-                for (var x = 0; x <= count; x++)
+                var main = 0;
+                for (var y = 0; y < size; ++y)
                 {
-                    var temp = matrix[x, y];
-                    matrix[x, y] = matrix[size - x - 1, y];
-                    matrix[size - x - 1, y] = temp;
+                    if (x != y)
+                    {
+                        main += matrix[x, y];
+                        main += matrix[y, x];
+                    }
                 }
+
+                matrix[x, x] = main;
             }
+           
         }
     }
 }
